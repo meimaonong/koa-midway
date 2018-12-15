@@ -5,6 +5,7 @@ module.exports = {
   title: "hashtag相关服务",
   version: "1.0.0",
   status: "online",
+  type: "https",
   services: [
     {
       name: "获取tag",

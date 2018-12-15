@@ -5,26 +5,28 @@ module.exports = {
   title: "feed相关服务",
   version: "1.0.0",
   status: "online",
+  type: "https",
+  base_url: BASE_URL.FEED_BASE_UR,
   services: [
     {
       name: "feed描述",
       id: "feed.des",
       urls: {
-        online: `${BASE_URL.FEED_BASE_URL}/des`
+        online: "/des"
       }
     },
     {
       name: "feed列表",
       id: "feed.feedList",
       urls: {
-        online: `${BASE_URL.FEED_BASE_URL}/feedList`
+        online: "/feedList"
       }
     },
     {
       name: "添加feed",
       id: "feed.addFeed",
       urls: {
-        online: `${BASE_URL.FEED_BASE_URL}/addFeed`
+        online: "/addFeed"
       },
       method: "post"
     }
