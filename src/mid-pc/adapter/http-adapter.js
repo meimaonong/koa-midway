@@ -1,7 +1,5 @@
 const axios = require("axios");
 
-module.exports = baseURL => {
-  return axios.create({
-    baseURL
-  });
+module.exports = () => {
+  return axios;
 };

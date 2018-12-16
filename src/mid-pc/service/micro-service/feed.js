@@ -6,13 +6,26 @@ module.exports = {
   version: "1.0.0",
   status: "online",
   type: "https",
-  base_url: BASE_URL.FEED_BASE_UR,
+  base_url: {
+    online: BASE_URL.FEED_BASE_URL
+  },
   services: [
     {
       name: "feed描述",
       id: "feed.des",
       urls: {
         online: "/des"
+      },
+      beforeSend: params => {
+        return params;
+      },
+      dataFilter: res => {
+        const d = res.data;
+        const r = {
+          article: d.data.a,
+          author: d.data.b
+        };
+        return r;
       }
     },
     {

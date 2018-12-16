@@ -1,0 +1,3 @@
+class ModelProxy {
+  static init() {}
+}

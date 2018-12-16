@@ -6,6 +6,9 @@ module.exports = {
   version: "1.0.0",
   status: "online",
   type: "https",
+  base_url: {
+    online: BASE_URL.HASHTAG_BASE_URL
+  },
   services: [
     {
       name: "获取tag",
