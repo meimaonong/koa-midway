@@ -2,10 +2,7 @@ const feed = require("./feed");
 const hashtag = require("./hashtag");
 const group = require("./group");
 
-const axios = require("axios");
-
-const tcpAdapter = require("./../../adapter/tcp-adapter");
-const tcp = new tcpAdapter();
+const adapter = require("./../../adapter");
 
 const serviceList = [feed, hashtag, group];
 
@@ -23,9 +20,9 @@ module.exports = () => {
           config.method === "GET"
             ? (config.params = params)
             : (config.data = params);
-          return axios(config).then(r =>
-            service.dataFilter ? service.dataFilter(r) : r
-          );
+          return adapter
+            .httpApi(config)
+            .then(r => (service.dataFilter ? service.dataFilter(r) : r));
         } else if (item.type === "tcp") {
           service.beforeSend && (params = service.beforeSend(params));
           const config = {
@@ -33,7 +30,17 @@ module.exports = () => {
             cmd: service.urls[item.status].cmd,
             params
           };
-          return tcp
+
+          const t = adapter.getTcp(
+            item.base_url[item.status].ADDRESS,
+            item.base_url[item.status].PORT
+          );
+
+          return adapter
+            .getTcp(
+              item.base_url[item.status].ADDRESS,
+              item.base_url[item.status].PORT
+            )
             .send(config)
             .then(r => (service.dataFilter ? service.dataFilter(r) : r));
         }
