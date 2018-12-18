@@ -4,6 +4,11 @@ module.exports = (router, microService) => {
     ctx.body = JSON.stringify(d);
   });
 
+  router.get("/groupDetail", async (ctx, next) => {
+    const d = await microService["group.detail"]();
+    ctx.body = JSON.stringify(d);
+  });
+
   /* router.get("/feedList", (ctx, next) => {
     api.get(req.path).then(r => {
       res.send(r.data);

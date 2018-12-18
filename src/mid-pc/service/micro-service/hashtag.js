@@ -14,14 +14,14 @@ module.exports = {
       name: "获取tag",
       id: "hashtag.getTag",
       urls: {
-        online: `${BASE_URL.HASHTAG_BASE_URL}/getTag`
+        online: "/getTag"
       }
     },
     {
       name: "获取tag",
       id: "hashtag.getTagList",
       urls: {
-        online: `${BASE_URL.HASHTAG_BASE_URL}/getTagList`
+        online: "/getTagList"
       }
     }
   ]
